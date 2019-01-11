@@ -30,6 +30,7 @@ class HomeController extends Controller
     public function index()
     {
         $posts = Post::with(['user', 'categories'])->paginate(10);
-        return view('welcome', compact('posts'));
+        $categories = Category::get(['title', 'id']);
+        return view('welcome', compact('posts', 'categories'));
     }
 }
