@@ -87,6 +87,11 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ URL::asset('js/custom-script.js') }}"></script>
     <script src="{{ URL::asset('js/bootstrap-datetimepicker.min.js') }}"></script>
-    
+    <script type="text/javascript">
+      var ServerRoot = '{{ url("/") }}';
+    </script>
+    <script type="text/javascript">
+   
+    </script>
 </body>
 </html>

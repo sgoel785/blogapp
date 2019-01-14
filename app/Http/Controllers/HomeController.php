@@ -35,12 +35,21 @@ class HomeController extends Controller
         return view('welcome', compact('posts', 'categories', 'users'));
     }
 
-    public function search(Request $request)
+//     public function search(Request $request)
+//     {
+//             if($request->ajax())
+//                     {
+//                             $output="Hello";
+//                     }
+//             return Response($output);
+//     }
+    public function ajaxRequest()
     {
-            if($request->ajax())
-                    {
-                            $output="Hello";
-                    }
-            return Response($output);
+        return view('ajaxRequest');
+    }
+    public function ajaxRequestPost()
+    {
+        $input = request()->all();
+        return response()->json(['input'=> $input]);
     }
 }

@@ -17,9 +17,10 @@
 
 Auth::routes();
 Route::get('/', 'HomeController@index');
-Route::get('/result', 'HomeController@search');
+Route::post('/result', 'HomeController@search');
 Route::get('/home', 'HomeController@index');
-
+Route::get('/ajaxRequest', 'HomeController@ajaxRequest');
+Route::post('/ajaxRequest', 'HomeController@ajaxRequestPost');
 Route::group(['middleware' => 'auth'], function () {
 
   Route::resource('category', 'CategoryController');
