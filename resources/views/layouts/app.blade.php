@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -82,6 +83,10 @@
     </div>
 
     <!-- Scripts -->
+    <script src="{{ URL::asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ URL::asset('js/custom-script.js') }}"></script>
+    <script src="{{ URL::asset('js/bootstrap-datetimepicker.min.js') }}"></script>
+    
 </body>
 </html>

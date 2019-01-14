@@ -17,16 +17,17 @@
 
 Auth::routes();
 Route::get('/', 'HomeController@index');
+Route::get('/result', 'HomeController@search');
 Route::get('/home', 'HomeController@index');
 
 Route::group(['middleware' => 'auth'], function () {
 
   Route::resource('category', 'CategoryController');
-
+  Route::post('/result/post', 'HomeController@search');
 	Route::get('post/trashed', 'PostController@trashed')->name('post.trashed');
 	Route::get('post/{id}/restore', 'PostController@restore')->name('post.restore');
 	Route::delete('post/{id}/delete', 'PostController@delete')->name('post.delete');
-
+	
 	Route::resource('post', 'PostController');
 
 

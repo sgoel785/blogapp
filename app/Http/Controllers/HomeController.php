@@ -31,6 +31,16 @@ class HomeController extends Controller
     {
         $posts = Post::with(['user', 'categories'])->paginate(10);
         $categories = Category::get(['title', 'id']);
-        return view('welcome', compact('posts', 'categories'));
+        $users = User::get(['name', 'id']);
+        return view('welcome', compact('posts', 'categories', 'users'));
+    }
+
+    public function search(Request $request)
+    {
+            if($request->ajax())
+                    {
+                            $output="Hello";
+                    }
+            return Response($output);
     }
 }
