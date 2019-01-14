@@ -34,22 +34,43 @@ class HomeController extends Controller
         $users = User::get(['name', 'id']);
         return view('welcome', compact('posts', 'categories', 'users'));
     }
-
-//     public function search(Request $request)
-//     {
-//             if($request->ajax())
-//                     {
-//                             $output="Hello";
-//                     }
-//             return Response($output);
-//     }
     public function ajaxRequest()
     {
         return view('ajaxRequest');
     }
-    public function ajaxRequestPost()
+    public function ajaxRequestPost(Request $request)
     {
-        $input = request()->all();
-        return response()->json(['input'=> $input]);
+        $cat_id = $request->category_id;
+        $user_id = $request->user_id;
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+        $output="";
+       //$posts = Post::with(['user', 'categories'])->where('user_id', '=', $user_id)->get();
+       // $post_ids = DB::table('category_post')->where('category_id', '=', $cat_id)->value('post_id');
+       // $posts = DB::table('posts')->where('id', '=', $post_id)->get();
+     $posts = Post::with(['user', 'categories'])->where('created_at', '>=', $start_date)->where('created_at', '<=', $end_date)->where('user_id', '=', $user_id)->get();
+    // $posts = Post::with(['user', 'categories'])->whereHas('categories', function($q){$q->where('id', "=", $cat_id);})->where('created_at', '>=', $start_date)->where('created_at', '<=', $end_date)->where('user_id', '=', $user_id)->get();
+    // $posts = Post::with(['user', 'categories'])->where('categories->id', '=', $cat_id)->get();
+        if($posts)
+        {       
+        foreach ($posts as $key => $post) {
+ 
+            $output.='<tr>'.
+             
+            '<td>'.$post->title.'</td>'.
+             
+            '</tr>';
+             
+            }
+        }else{
+            $output = "hello world";
+        }
+        //$posts = Post::all()->where('category_id', '=', $cat_id)->paginate(10);
+        //$input = request()->all();
+        //$output = "Hello World";
+        //print_r($input);
+       // return response()->json(['success'=>'Got Simple Ajax Request.']);
+       return Response($output);
+        //return response()->json(['input'=> 'Got simple ajax result']);
     }
 }

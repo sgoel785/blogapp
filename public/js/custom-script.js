@@ -67,7 +67,7 @@ $.ajaxSetup({
         data:{ category_id: category_id, user_id: user_id, start_date: start_date, end_date: end_date},
         success:function(data){
         $(".loader").hide();
-        $('.result_response').html(data.input);
+        $('.result_response').html(data);
         }
         });
         });
