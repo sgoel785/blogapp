@@ -23,6 +23,8 @@ Route::get('/ajaxRequest', 'HomeController@ajaxRequest');
 Route::post('/ajaxRequest', 'HomeController@ajaxRequestPost');
 Route::group(['middleware' => 'auth'], function () {
 
+Route::get('/contactus', function () {return view('ajax-form');});
+Route::post('/send', 'AjaxController@send');
   Route::resource('category', 'CategoryController');
   Route::post('/result/post', 'HomeController@search');
 	Route::get('post/trashed', 'PostController@trashed')->name('post.trashed');
