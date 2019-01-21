@@ -72,7 +72,7 @@
                                 <span class="text-1 mt-2 d-block" id="mailErrorMessage"></span>
                             </div>
 
-                            <form id="contactForm" action="{{ url('/send') }}" method="POST">
+                            <form id="contactForm"  >
                                 <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
                                 
                                 <div class="form-group">
@@ -90,7 +90,7 @@
                                     <textarea maxlength="5000" data-msg-required="Please enter your message" rows="8" class="form-control" name="message" id="message" placeholder="Message" required></textarea>                       
                                 </div>
 
-                                <input type="submit" value="Send Message" class="btn btn-primary" data-loading-text="Sending...">
+                                <input type="submit" onclick="contactform();" value="Send Message" class="btn btn-primary" data-loading-text="Sending...">
                             </form>
 
                         </div>
@@ -101,7 +101,7 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <!-- <script src="{{ asset('js/app.js') }}"></script> -->
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <script src="{{ asset('js/jquery.validation.min.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
